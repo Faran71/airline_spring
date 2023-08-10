@@ -1,8 +1,11 @@
 package com.bnta.airline.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +24,16 @@ public class Flight {
     private int capacity;
 
     @Column(name = "departure_date")
-    private String departureDate;
+    private LocalDate departureDate;
 
     @Column(name = "departure_time")
-    private String departureTime;
+    private LocalTime departureTime;
 
     @JsonIgnoreProperties({"flights"})
     @ManyToMany(mappedBy = "flights")
     private List<Passenger> passengers;
 
-    public Flight(String destination,int capacity,String departureDate, String departureTime){
+    public Flight(String destination,int capacity,LocalDate departureDate, LocalTime departureTime){
         this.destination = destination;
         this.capacity = capacity;
         this.departureDate = departureDate;
@@ -64,19 +67,19 @@ public class Flight {
         this.capacity = capacity;
     }
 
-    public String getDepartureDate() {
+    public LocalDate getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(LocalDate departureDate) {
         this.departureDate = departureDate;
     }
 
-    public String getDepartureTime() {
+    public LocalTime getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(String departureTime) {
+    public void setDepartureTime(LocalTime departureTime) {
         this.departureTime = departureTime;
     }
 

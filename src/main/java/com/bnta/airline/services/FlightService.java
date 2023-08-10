@@ -25,4 +25,8 @@ public class FlightService {
         return flightRepository.findById(id).get();
     }
 
+
+    public List<Flight> findAllFlightsTo(String destination){
+        return flightRepository.findByDestination(destination);
+    }
 }
